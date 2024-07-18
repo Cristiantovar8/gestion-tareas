@@ -1,0 +1,19 @@
+{
+  "name": "gestion-tareas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/app.ts"
+  },
+  "keywords": [],
+  "author": "Crisitan Tovar",
+  "license": "ISC",
+  "description": "Sistema de Gestión de Tareas",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21"
+  }
+}
