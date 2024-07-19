@@ -3,6 +3,14 @@ import {router} from "./routes/routes.tareas"
 
 const PORT = 3000
 const app = express()
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded(
+        {
+            extended: true
+        }));
 
 app.use(router);
 
