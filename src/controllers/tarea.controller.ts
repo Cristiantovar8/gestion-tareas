@@ -1,5 +1,5 @@
 import { Request, response, Response } from "express"
-import { insertar, obtener, obtenerLista } from "../services/tarea.service";
+import { insertar, obtener, obtenerLista, actualizar, eliminar } from "../services/tarea.service";
 
 const obtenerTarea = async (req: Request, res: Response) => {
     try{
@@ -37,8 +37,16 @@ const crearTarea = async (req: Request, res: Response) => {
     }
 }
 
-const actualizarTarea = (req: Request, res: Response) => {
-    res.json(req.body)
+const actualizarTarea = async ({ params, body }: Request, res: Response) => {
+    try{
+        const {id} = params;
+        const response = await actualizar(id, body);
+        res.send(response);
+    } catch(e) {
+        console.log(e)
+        res.status(500)
+        res.send(`Error al actualizar tareas:\n ${e}`)
+    }
 }
 
 const eliminarTarea = (req: Request, res: Response) => {

@@ -18,4 +18,17 @@ const obtener = async (id:string) => {
     return response
 }
 
-export { insertar, obtenerLista, obtener };
+const actualizar = async (id:string, data: Tarea) => {
+    const response = await TareaModel.findOneAndUpdate(
+        { _id: id }, 
+        data, 
+        { new:true, runValidators: true }
+    );
+    return response;
+}
+
+const eliminar = async ( ) => {
+
+}
+
+export { insertar, obtenerLista, obtener, actualizar, eliminar };
