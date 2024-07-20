@@ -10,6 +10,12 @@ const insertar = async (tarea: Tarea) => {
 
 const obtenerLista = async () => {
     const responseLista = await TareaModel.find({});
-    return responseLista
+    return responseLista;
+};
+
+const obtener = async (id:string) => {
+    const response = await TareaModel.findOne({ _id: id });
+    return response
 }
-export { insertar, obtenerLista };
+
+export { insertar, obtenerLista, obtener };
