@@ -1,5 +1,6 @@
 import { Usuario } from "../interfaces/usuario.interface"
 import UsuarioModel from "../models/usuario.model"
+import { generarToken } from "../utils/gestion.jwt"
 import { comparar, encriptar } from "../utils/gestion.password"
 
 const registrarUsuario = async (usuario: Usuario) => {
@@ -31,7 +32,14 @@ const loginUsuario = async (usuario: Usuario) => {
 
     if(!esCorrecto) return "Clave incorrecta"
 
-    return usuarioEncontrado
+    const token = generarToken(nombre)
+
+    const data = {
+        token: token,
+        usuario: usuarioEncontrado
+    }
+
+    return data
 }
 
 export { registrarUsuario, loginUsuario }
