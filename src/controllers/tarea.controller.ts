@@ -1,13 +1,21 @@
-import { Request, Response } from "express"
-import { insertar } from "../services/tarea.service";
+import { Request, response, Response } from "express"
+import { insertar, obtenerLista } from "../services/tarea.service";
 
 const obtenerTarea = (req: Request, res: Response) => {
     const tareaId = req.params.id; 
     res.send({data: `Obteniendo tarea con ID: ${tareaId}`})
 }
 
-const obtenerTareas = (req: Request, res: Response) => {
-    res.send({data: "Obteniiendo tareas"})
+const obtenerTareas = async (req: Request, res: Response) => {
+    try{
+        const response = await obtenerLista();
+        res.send(response);
+    } catch(e) {
+        console.log(e)
+        res.status(500)
+        res.send(`Error al obtener tareas:\n ${e}`)
+    }
+
 }
 
 const crearTarea = async (req: Request, res: Response) => {
