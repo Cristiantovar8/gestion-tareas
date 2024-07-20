@@ -1,7 +1,12 @@
 import TareaModel from "../models/tarea.model"
 import { Tarea } from "../interfaces/tarea.interface"
+import UsuarioModel from "../models/usuario.model";
 
 const insertar = async (tarea: Tarea) => {
+
+    const usuarioEncontrado = await UsuarioModel.findOne( { nombre: tarea.usuario } )
+
+    if (!usuarioEncontrado) return "Usuario no existe"
 
     const responseInsert = await TareaModel.create(tarea)
     return responseInsert
