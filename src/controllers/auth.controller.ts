@@ -15,10 +15,14 @@ const registrar = async (req: Request, res: Response) => {
 
 const login = async (req: Request, res: Response) => {
    
+    const {body} = req
     try {
-        
+        const responseUser = await loginUsuario(body)
+        res.send(responseUser)   
     } catch(e) {
-        
+        console.log(e)
+        res.status(500)
+        res.send(`Error al iniciar sesion:\n ${e}`)
     }
 }
 
