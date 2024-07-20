@@ -2,16 +2,16 @@ import {Router} from "express";
 import { obtenerTarea, obtenerTareas, crearTarea, actualizarTarea, eliminarTarea } from "../controllers/tarea.controller";
 
 
-const router = Router();
+const routerTarea = Router();
 
-router.get('/tareas', obtenerTareas);
+routerTarea.get('/tareas', obtenerTareas);
 
-router.get('/tareas/:id', obtenerTarea);
+routerTarea.get('/tareas/:id', obtenerTarea);
 
-router.post('/tareas/', crearTarea);
+routerTarea.post('/tareas/', crearTarea);
 
-router.put('/tareas/:id', actualizarTarea);
+routerTarea.put('/tareas/:id', actualizarTarea);
 
-router.delete('/tareas/:id', eliminarTarea);
+routerTarea.delete('/tareas/:id', eliminarTarea);
 
-export {router};
+export {routerTarea};

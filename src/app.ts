@@ -1,5 +1,6 @@
 import express from "express"
-import {router} from "./routes/routes.tareas"
+import {routerTarea} from "./routes/routes.tareas"
+import {routerAuth} from "./routes/routes.auth"
 import db from "./config/mongo"
 
 const PORT = 3000
@@ -13,7 +14,9 @@ app.use(
             extended: true
         }));
 
-app.use(router);
+app.use(routerTarea);
+app.use(routerAuth);
+
 db().then(() => console.log("Conectado a base de datos"));
 app.listen(PORT, () => {
     console.log(`Escuchado en puerto ${PORT}`)
