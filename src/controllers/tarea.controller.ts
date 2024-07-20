@@ -5,7 +5,8 @@ const obtenerTarea = async (req: Request, res: Response) => {
     try{
         const id = req.params.id;
         const response = await obtener(id);
-        res.send(response);
+        const data = response ? response: "Tarea no encontrada";
+        res.send(data);
     } catch(e) {
         console.log(e)
         res.status(500)
@@ -49,9 +50,16 @@ const actualizarTarea = async ({ params, body }: Request, res: Response) => {
     }
 }
 
-const eliminarTarea = (req: Request, res: Response) => {
-    const tareaId = req.params.id; 
-    res.send({data: `Borrando tarea con ID: ${tareaId}`})
+const eliminarTarea = async ({ params }: Request, res: Response) => {
+        try{
+        const { id }= params;
+        const response = await eliminar(id);
+        res.send(response);
+    } catch(e) {
+        console.log(e)
+        res.status(500)
+        res.send(`Error al eliminar tarea:\n ${e}`)
+    }
 }
 
 

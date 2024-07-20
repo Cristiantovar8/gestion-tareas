@@ -27,8 +27,9 @@ const actualizar = async (id:string, data: Tarea) => {
     return response;
 }
 
-const eliminar = async ( ) => {
-
+const eliminar = async (id: string) => {
+    const response = await TareaModel.deleteOne({ _id: id });
+    return response;
 }
 
 export { insertar, obtenerLista, obtener, actualizar, eliminar };
