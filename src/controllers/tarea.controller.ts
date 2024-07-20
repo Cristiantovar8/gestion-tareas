@@ -1,3 +1,5 @@
+/// <reference path="../types/global.d.ts" />
+
 import { Request, response, Response } from "express"
 import { insertar, obtener, obtenerLista, actualizar, eliminar } from "../services/tarea.service";
 
@@ -16,7 +18,8 @@ const obtenerTarea = async (req: Request, res: Response) => {
 
 const obtenerTareas = async (req: Request, res: Response) => {
     try{
-        const response = await obtenerLista();
+        const usuarioAutenticado = req.usuario
+        const response = await obtenerLista(usuarioAutenticado);
         res.send(response);
     } catch(e) {
         console.log(e)

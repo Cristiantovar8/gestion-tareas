@@ -13,8 +13,8 @@ const insertar = async (tarea: Tarea) => {
 
 };
 
-const obtenerLista = async () => {
-    const responseLista = await TareaModel.find({});
+const obtenerLista = async (usuario: String) => {
+    const responseLista = await TareaModel.find({usuario});
     return responseLista;
 };
 

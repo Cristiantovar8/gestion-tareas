@@ -6,13 +6,14 @@ const verificaJwt = (req: Request, res: Response, next: NextFunction) => {
     try {
         const jwtBearer = req.headers.authorization
         const jwt = jwtBearer?.split(' ').pop()
-        const esTokenValido = verificarToken(`${jwt}`)
+        const tokenValido = verificarToken(`${jwt}`)
 
-        if(!esTokenValido) {
+        if(!tokenValido) {
             res.status(401)
             res.send("Token de sesion invalido")
         } else {
-            console.log(`${jwt}`)
+            console.log(`${tokenValido.nombreUsuario}`)
+            req.usuario = tokenValido.nombreUsuario;
             next()
         }
 
