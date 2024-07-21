@@ -16,7 +16,7 @@ const insertar = async (tarea: Tarea, usuarioAutenticado: string) => {
 };
 
 const obtenerLista = async (usuarioAutenticado: string) => {
-    const responseLista = await TareaModel.find({usuarioAutenticado});
+    const responseLista = await TareaModel.find({usuario: usuarioAutenticado});
     return responseLista;
 };
 

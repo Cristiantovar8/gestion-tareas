@@ -18,7 +18,7 @@ app.use(
 
 app.use(routerTarea);
 app.use(routerAuth);
-app.use("/documentacionTareas", swaggerUi.serve, swaggerUi.setup(swaggerSetup))
+app.use("/documentacionApiTareas", swaggerUi.serve, swaggerUi.setup(swaggerSetup))
 
 db().then(() => console.log("Conectado a base de datos"));
 app.listen(PORT, () => {
