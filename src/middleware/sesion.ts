@@ -20,7 +20,7 @@ const verificaJwt = (req: Request, res: Response, next: NextFunction) => {
         
 
     } catch (e) {
-        res.status(400)
+        res.status(401)
         res.send("Sesion no valida")
     }
 
