@@ -6,7 +6,8 @@ import { insertar, obtener, obtenerLista, actualizar, eliminar } from "../servic
 const obtenerTarea = async (req: Request, res: Response) => {
     try{
         const id = req.params.id;
-        const response = await obtener(id);
+        const usuarioAutenticado = req.usuario
+        const response = await obtener(id, usuarioAutenticado);
         const data = response ? response: "Tarea no encontrada";
         res.send(data);
     } catch(e) {
@@ -32,7 +33,8 @@ const obtenerTareas = async (req: Request, res: Response) => {
 const crearTarea = async (req: Request, res: Response) => {
     const {body} = req
     try {
-        const response = await insertar(body)
+        const usuarioAutenticado = req.usuario
+        const response = await insertar(body, usuarioAutenticado)
         res.send(response)
     } catch(e) {
         console.log(e)
@@ -41,10 +43,12 @@ const crearTarea = async (req: Request, res: Response) => {
     }
 }
 
-const actualizarTarea = async ({ params, body }: Request, res: Response) => {
+const actualizarTarea = async (req: Request, res: Response) => {
     try{
-        const {id} = params;
-        const response = await actualizar(id, body);
+        const id = req.params.id;
+        const {body} = req;
+        const usuarioAutenticado = req.usuario
+        const response = await actualizar(id, body, usuarioAutenticado);
         res.send(response);
     } catch(e) {
         console.log(e)
@@ -53,10 +57,11 @@ const actualizarTarea = async ({ params, body }: Request, res: Response) => {
     }
 }
 
-const eliminarTarea = async ({ params }: Request, res: Response) => {
-        try{
-        const { id }= params;
-        const response = await eliminar(id);
+const eliminarTarea = async (req: Request, res: Response) => {
+    try{
+        const id = req.params.id;
+        const usuarioAutenticado = req.usuario
+        const response = await eliminar(id, usuarioAutenticado);
         res.send(response);
     } catch(e) {
         console.log(e)

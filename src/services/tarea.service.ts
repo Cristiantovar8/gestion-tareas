@@ -2,37 +2,55 @@ import TareaModel from "../models/tarea.model"
 import { Tarea } from "../interfaces/tarea.interface"
 import UsuarioModel from "../models/usuario.model";
 
-const insertar = async (tarea: Tarea) => {
+const insertar = async (tarea: Tarea, usuarioAutenticado: string) => {
 
-    const usuarioEncontrado = await UsuarioModel.findOne( { nombre: tarea.usuario } )
+    const usuarioEncontrado = await UsuarioModel.findOne( { nombre: usuarioAutenticado } )
 
     if (!usuarioEncontrado) return "Usuario no existe"
+
+    tarea.usuario = usuarioAutenticado
 
     const responseInsert = await TareaModel.create(tarea)
     return responseInsert
 
 };
 
-const obtenerLista = async (usuario: String) => {
-    const responseLista = await TareaModel.find({usuario});
+const obtenerLista = async (usuarioAutenticado: string) => {
+    const responseLista = await TareaModel.find({usuarioAutenticado});
     return responseLista;
 };
 
-const obtener = async (id:string) => {
+const obtener = async (id:string, usuarioAutenticado: string) => {
     const response = await TareaModel.findOne({ _id: id });
+    if (response?.usuario != usuarioAutenticado)
+        return "Tarea no asociada al usuario"
     return response
 }
 
-const actualizar = async (id:string, data: Tarea) => {
-    const response = await TareaModel.findOneAndUpdate(
+const actualizar = async (id:string, tarea: Tarea, usuarioAutenticado: string) => {
+
+    const tareaUsuario = await TareaModel.findOne({ _id: id });
+
+    if(tareaUsuario?.usuario != usuarioAutenticado)
+        return "Tarea no asociada al usuario"
+
+    tarea.usuario = usuarioAutenticado
+
+    const response = await TareaModel.updateOne(
         { _id: id }, 
-        data, 
+        tarea, 
         { new:true, runValidators: true }
     );
     return response;
 }
 
-const eliminar = async (id: string) => {
+const eliminar = async (id: string, usuarioAutenticado: string) => {
+
+    const tareaUsuario = await TareaModel.findOne({ _id: id });
+
+    if(tareaUsuario?.usuario != usuarioAutenticado)
+        return "Tarea no asociada al usuario"
+
     const response = await TareaModel.deleteOne({ _id: id });
     return response;
 }
