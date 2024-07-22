@@ -49,6 +49,10 @@ Probar con Postman:
 
 En postman importar la coleccion: **API REST NODE.postman_collection.json**
 
+Autentcacion:
+
+Las rutas estan protegidas con token de autenticacin JWT. Antes de manipular las rutas de tareas, es necesario registrar usuario e iniciar sesion para obtener los tokens.
+
 ## Arquitectura
 
 El proyecto está estructurado del a siguiente forma:
