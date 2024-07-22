@@ -45,9 +45,14 @@ Porbar con Swagger:
 
 http://localhost:3000/documentacionApiTareas
 
+![Swagger]([URL_de_la_imagen](https://github.com/Cristiantovar8/gestion-tareas/blob/master/src/docs/swagger.png
+))
+
 Probar con Postman:
 
 En postman importar la coleccion: **API REST NODE.postman_collection.json**
+
+![Postman]([URL_de_la_imagen](https://github.com/Cristiantovar8/gestion-tareas/blob/master/src/docs/postman.png))
 
 Autentcacion:
 
