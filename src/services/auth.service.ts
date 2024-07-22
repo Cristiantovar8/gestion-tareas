@@ -3,6 +3,12 @@ import UsuarioModel from "../models/usuario.model"
 import { generarToken } from "../utils/gestion.jwt"
 import { comparar, encriptar } from "../utils/gestion.password"
 
+
+/**
+ * Registra un usuario nuevo en el sistema, valida si el usuario existe
+ * @param usuario 
+ * @returns usuario registrado
+ */
 const registrarUsuario = async (usuario: Usuario) => {
     const existe = await UsuarioModel.findOne( { nombre: usuario.nombre } )
 
@@ -18,6 +24,12 @@ const registrarUsuario = async (usuario: Usuario) => {
     return registraUsuario
 }
 
+
+/**
+ * Inicia sesion de usuario, validando usuario y contraseña y generando un toiken jwt
+ * @param usuario 
+ * @returns token de autenticacion e informacion de usuario
+ */
 const loginUsuario = async (usuario: Usuario) => {
     const nombre = usuario.nombre
     const clave = usuario.clave
