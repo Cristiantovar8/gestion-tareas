@@ -1,6 +1,9 @@
 import "dotenv/config"
 import { connect } from "mongoose"
 
+/**
+ * Conexion a la base de datos MongoDB
+ */
 async function dbConnect(): Promise<void> {
 
     //const DB_URI = <string>process.env.DB_URI
