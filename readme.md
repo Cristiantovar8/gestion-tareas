@@ -43,13 +43,13 @@ Instalar dependencias definidas en package.json
 
 El proyecto está estructurado del a siguiente forma:
 
-**interfaces**: Define interfaces TypeScript para los datos.
-**controllers**: Maneja la lógica de peticiones y respuestas la aplicación.
-**models**: Define los esquemas de la base de datos.
-**routes**: Define las rutas de la API.
-**services**: Contiene la lógica de negocio para operaciones específicas.
-**middleware**: Contiene middleware para la autenticación y autorización.
-**config**: Configura la conexión a la base de datos.
-**docs**: Contiene la configuración de Swagger para la documentación de la API.
-**utils**: Contiene utilidades auxiliares como la gestión de JWT y contraseñas.
-**types**: Define tipos globales extendidos para Express.
+- **interfaces**: Define interfaces TypeScript para los datos.
+- **controllers**: Maneja la lógica de peticiones y respuestas la aplicación.
+- **models**: Define los esquemas de la base de datos.
+- **routes**: Define las rutas de la API.
+- **services**: Contiene la lógica de negocio para operaciones específicas.
+- **middleware**: Contiene middleware para la autenticación y autorización.
+- **config**: Configura la conexión a la base de datos.
+- **docs**: Contiene la configuración de Swagger para la documentación de la API.
+- **utils**: Contiene utilidades auxiliares como la gestión de JWT y contraseñas.
+- **types**: Define tipos globales extendidos para Express.
