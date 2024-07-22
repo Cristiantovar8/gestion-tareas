@@ -1,6 +1,14 @@
 import { Request, Response } from "express"
 import { registrarUsuario, loginUsuario } from "../services/auth.service"
 
+
+/**
+ * Registra un nuevo usuario
+ * @param {Request} req - La solicitud HTTP
+ * @param {Response} res - La respuesta HTTP
+ * @returns Usuario creado
+ * @throws {Error} Error al registrar el usuario
+ */
 const registrar = async (req: Request, res: Response) => {
     const {body} = req
     try {
@@ -13,6 +21,13 @@ const registrar = async (req: Request, res: Response) => {
     }
 }
 
+/**
+ * Autentica un usuario
+ * @param {Request} req - La solicitud HTTP
+ * @param {Response} res - La respuesta HTTP
+ * @returns Usuario autenticado y token
+ * @throws {Error} Error al iniciar sesión
+ */
 const login = async (req: Request, res: Response) => {
    
     const {body} = req

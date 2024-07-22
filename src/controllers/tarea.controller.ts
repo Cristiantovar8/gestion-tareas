@@ -3,6 +3,13 @@
 import { Request, response, Response } from "express"
 import { insertar, obtener, obtenerLista, actualizar, eliminar } from "../services/tarea.service";
 
+/**
+ * Obtiene una tarea específica por su ID
+ * @param {Request} req - La solicitud HTTP
+ * @param {Response} res - La respuesta HTTP
+ * @returns {Promise<void>}
+ * @throws {Error} Error al obtener la tarea
+ */
 const obtenerTarea = async (req: Request, res: Response) => {
     try{
         const id = req.params.id;
@@ -17,6 +24,14 @@ const obtenerTarea = async (req: Request, res: Response) => {
     }
 }
 
+
+/**
+ * Obtiene la lista de tareas del usuario autenticado
+ * @param {Request} req - La solicitud HTTP
+ * @param {Response} res - La respuesta HTTP
+ * @returns {Promise<void>}
+ * @throws {Error} Error al obtener las tareas
+ */
 const obtenerTareas = async (req: Request, res: Response) => {
     try{
         const usuarioAutenticado = req.usuario
@@ -30,6 +45,13 @@ const obtenerTareas = async (req: Request, res: Response) => {
 
 }
 
+/**
+ * Crea una nueva tarea
+ * @param {Request} req - La solicitud HTTP
+ * @param {Response} res - La respuesta HTTP
+ * @returns {Promise<void>}
+ * @throws {Error} Error al crear la nueva tarea
+ */
 const crearTarea = async (req: Request, res: Response) => {
     const {body} = req
     try {
@@ -43,6 +65,14 @@ const crearTarea = async (req: Request, res: Response) => {
     }
 }
 
+
+/**
+ * Actualiza una tarea específica por su ID
+ * @param {Request} req - La solicitud HTTP
+ * @param {Response} res - La respuesta HTTP
+ * @returns {Promise<void>}
+ * @throws {Error} Error al actualizar la tarea
+ */
 const actualizarTarea = async (req: Request, res: Response) => {
     try{
         const id = req.params.id;
@@ -57,6 +87,14 @@ const actualizarTarea = async (req: Request, res: Response) => {
     }
 }
 
+
+/**
+ * Elimina una tarea específica por su ID
+ * @param {Request} req - La solicitud HTTP
+ * @param {Response} res - La respuesta HTTP
+ * @returns {Promise<void>}
+ * @throws {Error} Error al eliminar la tarea
+ */
 const eliminarTarea = async (req: Request, res: Response) => {
     try{
         const id = req.params.id;
