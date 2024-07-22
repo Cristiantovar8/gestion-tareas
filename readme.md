@@ -2,7 +2,7 @@
 
 ##### Node, Express, TypeScript, MongoDB
 
-#### Configuracion
+## Configuracion
 
 ##### Configuracion global
 
@@ -35,11 +35,11 @@ Instalar dependencias definidas en package.json
 - swagger-ui-express: Es un middleware para servir la interfaz Swagger UI en aplicaciones Express.
 
 
-#### Ejecucion
+## Ejecucion
 
     npm run dev
 
-#### Arquitectura
+## Arquitectura
 
 El proyecto está estructurado del a siguiente forma:
 
