@@ -37,7 +37,17 @@ Instalar dependencias definidas en package.json
 
 ## Ejecucion
 
+Iniciar el servidor:
+
     npm run dev
+
+Porbar con Swagger:
+
+http://localhost:3000/documentacionApiTareas
+
+Probar con Postman:
+
+En postman importar la coleccion: **API REST NODE.postman_collection.json**
 
 ## Arquitectura
 
